@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ce.web</groupId>
@@ -12,20 +12,19 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+		<!-- Cucumber dependencies -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<version>5.4.0</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java8 -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java8</artifactId>
@@ -36,49 +35,49 @@
 			<artifactId>cucumber-java</artifactId>
 			<version>5.4.0</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-core</artifactId>
 			<version>5.4.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.googlecode.totallylazy/totallylazy -->
-		<dependency>
-			<groupId>com.googlecode.totallylazy</groupId>
-			<artifactId>totallylazy</artifactId>
-			<version>1193</version>
-		</dependency>
 
+		<!-- Removed: com.googlecode.totallylazy (dependency unavailable in Maven Central) -->
+		<!-- Consider adding it manually if required -->
+
+		<!-- HTTP Client -->
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
 			<artifactId>okhttp</artifactId>
 			<version>4.4.0</version>
 		</dependency>
+
+		<!-- Reporting Dependencies -->
 		<dependency>
 			<groupId>com.github.mkolisnyk</groupId>
 			<artifactId>cucumber-reports</artifactId>
 			<version>0.0.2</version>
 		</dependency>
-		<!-- <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> 
-			<version>4.13</version> <scope>test</scope> </dependency> -->
-		<!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
 		<dependency>
 			<groupId>net.masterthought</groupId>
 			<artifactId>cucumber-reporting</artifactId>
 			<version>5.2.2</version>
 		</dependency>
-
 	</dependencies>
+
 	<build>
 		<plugins>
-			<!-- <plugin> <groupId>com.jolira</groupId> <artifactId>onejar-maven-plugin</artifactId> 
-				<version>1.4.4</version> <executions> <execution> <goals> <goal>one-jar</goal> 
-				</goals> </execution> </executions> </plugin> -->
+			<!-- Maven Compiler Plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
 			</plugin>
+
+			<!-- Cucumber Reporting Plugin -->
 			<plugin>
 				<groupId>net.masterthought</groupId>
 				<artifactId>maven-cucumber-reporting</artifactId>
@@ -107,22 +106,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>repo.bodar.com</id>
-			<url>http://repo.bodar.com</url>
-		</repository>
 
-		<repository>
-			<id>central1</id>
-			<url>http://repo1.maven.org/maven2</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
+	<repositories>
 		<repository>
 			<id>central</id>
 			<name>Central Repository</name>
